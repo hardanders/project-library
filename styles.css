@@ -37,11 +37,13 @@ body {
     color: aquamarine;
     font-weight: bold;
     font-size: 16px;
+
+    border: 1px solid aquamarine;
 }
 
 #display-books {
     background-color: white;
-    height: 78vh;
+    height: 80vh;
     width: 75vw;
     gap: 24px;
 
@@ -122,4 +124,11 @@ form {
     color: aquamarine;
     font-weight: bold;
     font-size: 16px;
+
+    border: 1px solid aquamarine
+}
+
+.new-book:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px black;
 }

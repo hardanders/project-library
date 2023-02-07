@@ -50,7 +50,7 @@ function addToScreen() {
             `<div class="book-row a${book}">
                 <div class="cell">${myLibrary[book].title}</div>
                 <div class="cell">${myLibrary[book].author}</div>
-                <div class="cell">${myLibrary[book].pages}</div>
+                <div class="cell">Pages: ${myLibrary[book].pages}</div>
                 <div class="cell"><input type="checkbox" name="read" class="check-box"></div>
                 <div class="cell"><button class="delete">DELETE</button></div>
             </div>`
