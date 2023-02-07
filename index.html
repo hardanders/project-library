@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js"></script>
+</head>
+<body>
+    <div id="display-input">
+        <div class="header-name">
+            MY AWESOME LIBRARY
+        </div>
+        <button onclick="toggleForm()" class="new-book">+ Add a New Book!</button>
+    </div>
+    <div id="display-books">
+
+    </div>
+    <form id="main-form" class="hidden">
+        <button onclick="toggleForm()" class="exit-icon">X</button>
+        <div class="form-text">What books have you read this year?</div>
+        <div class="book-name">
+            <label for="book-name">Book Name</label>
+            <input type="text" id="book-name" name="book-name">
+        </div>
+        <div class="book-author">
+            <label for="book-author">Book Author</label>
+            <input type="text" id="book-author" name="book-author">
+        </div>
+        <div class="book-pages">
+            <label for="book-pages"># of Pages</label>
+            <input type="text" id="book-pages" name="book-pages">
+        </div>
+        <div class="book-read">
+            <label for="book-read">Have you read this book?</label>
+            <input type="checkbox" id="book-read" name="book-read">
+        </div>
+        <button class="addBtn" onclick="execute(event)">Add Book!</button>
+    </form>
+</body>
+</html>
