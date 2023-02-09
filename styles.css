@@ -38,6 +38,8 @@ body {
     font-weight: bold;
     font-size: 16px;
 
+    box-shadow: 3px 3px black;
+
     border: 1px solid aquamarine;
 }
 
@@ -130,5 +132,8 @@ form {
 
 .new-book:hover {
     cursor: pointer;
-    box-shadow: 3px 3px black;
+    position: relative;
+    box-shadow: none;
+    left:3px;
+    top:3px;
 }
