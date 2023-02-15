@@ -1,24 +1,58 @@
 let myLibrary = []
 let counter;
 
-let testChange = testChange;
-
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    this.counter = counter
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.counter = counter;
+    }
 }
 
-function addBookToLibrary() {
-    let title = document.getElementById("book-name").value
-    let author = document.getElementById("book-author").value
-    let pages = document.getElementById("book-pages").value
-    let read = document.getElementById("book-read").checked
-    let thisBook = new Book(title, author, pages, read)
-    myLibrary.push(thisBook)
+class Library {
+    constructor() {
+        this.books = []
+    }
+
+    addBookToLibrary() {
+        let title = document.getElementById("book-name").value
+        let author = document.getElementById("book-author").value
+        let pages = document.getElementById("book-pages").value
+        let read = document.getElementById("book-read").checked
+        let thisBook = new Book(title, author, pages, read)
+        myLibrary.push(thisBook)
+        this.books.push(thisBook)
+    }
+
+    addToScreen() {
+        let container = document.getElementById("display-books")
+        container.innerHTML = ''
+        for (book in myLibrary) {
+            let bookRow = 
+                `<div class="book-row a${book}">
+                    <div class="cell">${myLibrary[book].title}</div>
+                    <div class="cell">${myLibrary[book].author}</div>
+                    <div class="cell">Pages: ${myLibrary[book].pages}</div>
+                    <div class="cell"><input type="checkbox" name="read" class="check-box"></div>
+                    <div class="cell"><button class="delete">DELETE</button></div>
+                </div>`
+            container.innerHTML += bookRow
+        }
+        this.isChecked()
+    }
+
+    isChecked() {
+        for (book in myLibrary) {
+            if (myLibrary[book].read == true) {
+                document.querySelector(`.a${book} input[type="checkbox"]`).checked = true
+            }
+        }
+    }
 }
+
+let newLibrary = new Library();
 
 function formReset() {
     document.getElementById("main-form").reset()
@@ -31,7 +65,7 @@ function addListeners() {
         deleteBtn[i].addEventListener("click", function() {
             myLibrary.splice(i, 1)
             assignPosition()
-            addToScreen()
+            newLibrary.addToScreen()
             addListeners()
         })
     }
@@ -42,44 +76,17 @@ function addListeners() {
     }
 }
 
-function addToScreen() {
-    let container = document.getElementById("display-books")
-    container.innerHTML = ''
-    for (book in myLibrary) {
-        bookRow = 
-            `<div class="book-row a${book}">
-                <div class="cell">${myLibrary[book].title}</div>
-                <div class="cell">${myLibrary[book].author}</div>
-                <div class="cell">Pages: ${myLibrary[book].pages}</div>
-                <div class="cell"><input type="checkbox" name="read" class="check-box"></div>
-                <div class="cell"><button class="delete">DELETE</button></div>
-            </div>`
-        container.innerHTML += bookRow
-    }
-    isChecked()
-}
-
-function isChecked() {
-    for (book in myLibrary) {
-        if (myLibrary[book].read == true) {
-            document.querySelector(`.a${book} input[type="checkbox"]`).checked = true
-        }
-    }
-}
-
-
-
 function toggleForm() {
     let formList = document.getElementById("main-form").classList
     formList.contains("hidden") ? formList.remove("hidden") : formList.add("hidden")
 }
 
 function execute(event) {
-    addBookToLibrary()
+    newLibrary.addBookToLibrary();
     assignPosition()
     toggleForm()
     formReset()
-    addToScreen()
+    newLibrary.addToScreen();
     addListeners()
     event.preventDefault()
 }
@@ -89,6 +96,3 @@ function assignPosition() {
         myLibrary[book].counter = myLibrary.indexOf(myLibrary[book])
     }
 }
-
-
-
