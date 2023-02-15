@@ -1,7 +1,7 @@
 let myLibrary = []
 let counter;
 
-
+let testChange = testChange;
 
 function Book(title, author, pages, read) {
     this.title = title
